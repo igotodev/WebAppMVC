@@ -1,0 +1,15 @@
+@{
+    if (TempData["success"] != null)
+    {
+        <div style="text-align:center; margin-top: 2vh; margin-bottom: auto;">
+            <span class="badge bg-info text-dark">@TempData["success"]</span>
+        </div>
+
+    }
+    if (TempData["error"] != null)
+    {
+
+        <span class="badge bg-warning text-dark">@TempData["success"]</span>
+
+    }
+}

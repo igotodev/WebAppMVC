@@ -1,0 +1,62 @@
+@using WebAppMVC.Models
+@model IEnumerable<NoteViewModel>
+
+@*for default same layout*@
+@* @{ *@
+@* Layout = "_Layout"; *@
+@* *@
+@* } *@
+
+@{
+    ViewData["Title"] = "Note";
+}
+
+<partial name="_Notification" />
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2>Note List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Note" asp-action="Create" class="btn btn-secondary">
+                <i class="bi bi-plus-circle"></i>&nbsp;&nbsp;Create New Note
+            </a>
+        </div>
+    </div>
+    <br />
+
+    <table class="table" style="width: 100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Message</th>
+                <th>Created Time</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <br />
+                    <td style="width: 20%">@item.Name</td>
+                    <td style="width: 60%">@item.Message</td>
+                    <td style="width: 20%">@item.CreatedDataTime</td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a class="btn btn-warning mx-2" asp-controller="Note" asp-action="Edit"
+                            asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a>
+                            <a class="btn btn-danger mx-2" asp-controller="Note" asp-action="Delete"
+                            asp-route-id="@item.Id"><i class="bi bi-trash"></i>&nbsp;Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
